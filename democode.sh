@@ -13,9 +13,18 @@ githubRepo=("Index" "C" "Shell_Bash" "Python" "CPP" "Makefile")
 
 for var in "${githubRepo[@]}"; do
     if [ -d "${var}" ];then
-        cd "${var}";echo -e "-->> In $(pwd)\n";git pull;git st;cd -;echo -e "\nOut $(pwd) -->>"
+        cd "${var}"
+		echo -e "-->> In $(pwd)\n"
+		git pull
+		git st
+		git config user.name anonymousDemoCode
+		cd -
+		echo -e "\nOut $(pwd) -->>"
         echo -e "\n\n\n"
     else
         git clone https://github.com/anonymousDemoCode/"${var##*/}".git
+		cd "${var##*/}"
+		git config user.name anonymousDemoCode
+		cd -
     fi
 done
