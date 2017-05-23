@@ -14,10 +14,13 @@ githubRepo=("Index" "C" "Shell_Bash" "Python" "CPP" "Makefile")
 for var in "${githubRepo[@]}"; do
     if [ -d "${var}" ];then
         cd "${var}"
+		git config user.name anonymousDemoCode
+		git config  user.email "anonymousDemoCode@users.noreply.github.com"
 		echo -e "-->> In $(pwd)\n"
 		git pull
 		git st
-		git config user.name anonymousDemoCode
+		git config --unset user.name
+		git config  --unset user.email
 		cd -
 		echo -e "\nOut $(pwd) -->>"
         echo -e "\n\n\n"
@@ -25,6 +28,7 @@ for var in "${githubRepo[@]}"; do
         git clone https://github.com/anonymousDemoCode/"${var##*/}".git
 		cd "${var##*/}"
 		git config user.name anonymousDemoCode
+		git config  user.email "anonymousDemoCode@users.noreply.github.com"
 		cd -
     fi
 done
